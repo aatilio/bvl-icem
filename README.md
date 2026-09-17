@@ -1,149 +1,217 @@
-# 🌾 Efecto del Uso de Semillas Certificadas sobre el Rendimiento Agrícola del Arroz Cáscara en el Perú: Evidencia del Año 2024
+# 🌊 Shocks de El Niño Costero y Mercado Bursátil Peruano: Evidencia Econométrica sobre Retornos, Volatilidad Condicional y Heterogeneidad Sectorial en la BVL (2015–2026)
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab?style=flat-square&logo=python&logoColor=white)
 ![Stata](https://img.shields.io/badge/Stata-16.0%2B-1f5b8c?style=flat-square&logo=stata&logoColor=white)
-![INEI](https://img.shields.io/badge/Datos-ENA_2024-e63946?style=flat-square)
-![UNSA](https://img.shields.io/badge/UNSA-Econometría_1-2b2d42?style=flat-square)
-![LaTeX](https://img.shields.io/badge/Paper-LaTeX_10_Páginas-008080?style=flat-square&logo=latex)
+![BCRP API](https://img.shields.io/badge/Datos-BCRP_API-003366?style=flat-square)
+![IGP ENFEN](https://img.shields.io/badge/Clima-ICEN_IGP-e63946?style=flat-square)
+![UNSA](https://img.shields.io/badge/UNSA-Econometría_II-2b2d42?style=flat-square)
+![Series de Tiempo](https://img.shields.io/badge/Método-Local_Projections_%26_GARCH--X-008080?style=flat-square)
 
-> **Trabajo de Investigación de Fin de Curso — Econometría 1**  
+> **Trabajo de Investigación Formativa (TIF) — Econometría II**  
 > **Universidad Nacional de San Agustín de Arequipa (UNSA)** — *Facultad de Economía*  
-> **Autores:** Ccanchi, A.; Condori, A.; Flores, M.; López, F.; Mamani, E.; Medina, C.; Morante, C.; Quispe, R.; Suri, D.; Villavicencio, S.; Yauri, G.
+> **Área:** Macroeconometría Financiera y Riesgo Climático (*Climate Finance*)  
+> **Período Muestral:** Enero de 2015 – Mayo de 2026 ($T = 137$ observaciones mensuales)
 
 ---
 
-## 📌 Resumen y Motivación del Estudio
+## 📌 1. Resumen y Pregunta de Investigación
 
-El arroz cáscara (*Oryza sativa* L.) es el cultivo de mayor trascendencia económica y seguridad alimentaria en el Perú, abarcando una vasta superficie cosechada en los valles de costa y selva. Sin embargo, la productividad agropecuaria nacional muestra una marcada heterogeneidad tecnológica, caracterizada por la persistencia del uso de grano autoguardado o reciclado frente a la adopción de insumos formales de alta pureza genética.
+El Fenómeno El Niño Costero representa uno de los eventos hidrometeorológicos y climáticos de mayor disrupción física y macroeconómica en el Perú, generando daños severos en infraestructura vial, agricultura y pesquería. A pesar de su recurrencia (notablemente en los eventos extraordinarios de 2017 y 2023), la literatura financiera emergente ha prestado escasa atención al mecanismo de transmisión hacia el mercado de capitales doméstico mediante indicadores climáticos locales y desagregación sectorial.
 
-El presente estudio evalúa empíricamente el impacto del uso de **semillas certificadas** sobre el rendimiento físico en campo ($kg/ha$) durante la campaña agrícola 2024. Tomando como fundamento teórico y metodológico referencial el trabajo de **Takeshima et al. (2025)** para microdatos probabilísticos de encuestas agropecuarias nacionales (*General Household Survey-Panel* de Nigeria), nuestra investigación aísla el efecto marginal de la certificación formal frente a variedades comunes, controlando estrictamente por heterogeneidad en el acceso a riego, choques climáticos adversos, perfil sociodemográfico del productor y efectos fijos territoriales a nivel departamental.
+Este estudio analiza empíricamente la **respuesta dinámica de los retornos accionarios y la volatilidad condicional de la Bolsa de Valores de Lima (BVL)** ante los shocks exógenos del **Índice Costero El Niño (ICEN)**, evaluando la existencia de **heterogeneidad sectorial** (Financiero, Industrial, Minería y Servicios Públicos) e incorporando el canal mediador de las **expectativas macroeconómicas y empresariales**.
 
----
+### Pregunta General de Investigación:
+> *¿Los shocks del Índice Costero El Niño (ICEN) generan una respuesta dinámica y estadísticamente identificable en los retornos y la volatilidad condicional del mercado bursátil peruano, y es dicha respuesta heterogénea entre los sectores económicos de la Bolsa de Valores de Lima durante el período 2015–2026?*
 
-## 🏛️ Estrategia Metodológica y Microdatos
-
-### 1. Fuente de Datos y Depuración Muestral
-La investigación utiliza microdatos probabilísticos representativos de la **Encuesta Nacional Agropecuaria (ENA) 2024**, ejecutada por el **Instituto Nacional de Estadística e Informática (INEI)** (Módulos 1895 y 1911). 
-* La muestra analítica final consta de **$1{,}991$ unidades agropecuarias productoras de arroz cáscara** distribuidas en 16 departamentos agroecológicos.
-* Siguiendo a **Correia (2015)**, se identificó y excluyó una observación solitaria (*singleton*) correspondiente al departamento de Ayacucho ($N=1$), lo cual evitó el sobreajuste artificial de interceptos, corrigo con exactitud los grados de libertad inferenciales y estabilizó el coeficiente de determinación en **$R^2 = 0{,}5480$**.
-
-### 2. Especificación del Modelo Econométrico (MCO Robustos)
-Estimamos una función de producción agropecuaria de forma **log-lineal** por Mínimos Cuadrados Ordinarios (MCO) con errores estándar robustos a heterocedasticidad de Huber-White (`vce(robust)`):
-
-$$\ln(\text{Rendimiento}_{i}) = \beta_0 + \beta_1 \text{SemillasCertificadas}_{i} + \mathbf{X}'_{i}\boldsymbol{\gamma} + \mathbf{Z}'_{i}\boldsymbol{\delta} + \mu_{d} + \varepsilon_{i}$$
-
-Donde el cambio porcentual exacto o aproximación directa sobre el rendimiento por hectárea atribuible a la adopción varietal y covariables continuas/binarias se evalúa mediante: $\hat{\beta}_k \times 100$.
+### Preguntas Específicas:
+1. **Dinámica e Impulso-Respuesta:** ¿Existe una respuesta estadísticamente significativa en los retornos del índice general (S&P/BVL Peru General) ante innovaciones del ICEN y en qué horizonte temporal ($h$ meses) se disipa?
+2. **Volatilidad e Incertidumbre:** ¿Aumentan las anomalías térmicas del mar la volatilidad condicional del mercado bursátil, y existe asimetría entre shocks cálidos ($ICEN > 0$) y fases frías ($ICEN < 0$)?
+3. **Heterogeneidad Sectorial:** ¿Difiere la magnitud y signo de la respuesta entre sectores con exposición física directa (Industria, Servicios Públicos) frente a sectores con fijación global de precios (Minería) o intermediación financiera?
+4. **Canal de Transmisión de Expectativas:** ¿Actúan las expectativas de crecimiento del PBI y la confianza empresarial del BCRP como eslabón transmisor del shock climático?
+5. **Robustez a Quiebres:** ¿Se mantiene la relación estimada tras controlar por el quiebre estructural exógeno de la pandemia COVID-19 (2020)?
 
 ---
 
-## 📊 Principales Hallazgos Empíricos
+## 🔄 2. Mecanismo Teórico de Transmisión
 
-Los resultados de las estimaciones (Modelo 5 definitivo, $F(23, 1967) = 76{,}32$, $p < 0{,}0001$) confirman y validan nuestra hipótesis general de investigación:
+Siguiendo el marco conceptual desarrollado en el documento metodológico (*Book/El Niño Costero y la BVL.pdf*), la cadena causal postulada se estructura de la siguiente manera:
 
 ```text
-========================================================================================
-VARIABLE / DETERMINANTE          COEFICIENTE (β̂)    ERROR ROBUSTO   IMPACTO % DIRECTO
-========================================================================================
-[Tratamiento Principal]
-Semillas Certificadas (1=Sí)       0.0982 ***          (0.0234)         +9.82 %
-----------------------------------------------------------------------------------------
-[Prácticas Agronómicas y Clima]
-Fuente de Agua Tecnificada (1=Sí)  0.4858 ***          (0.0871)        +48.58 %
-Choque: Sequía                     -0.0818 *           (0.0456)         -8.18 %
-Choque: Lluvias a Destiempo        -0.1968 *           (0.1039)        -19.68 %
-Choque: Plagas y Enfermedades      -0.1323 ***         (0.0270)        -13.23 %
-Choque: Otros Factores Climáticos  -0.3629 ***         (0.0991)        -36.29 %
-----------------------------------------------------------------------------------------
-[Perfil Sociodemográfico]
-Mujer Productora (1=Sí)            -0.0733 ***         (0.0253)         -7.33 %
-Educación Superior (1=Sí)          0.0671 ***          (0.0258)         +6.71 %
-Edad del Productor (años)          0.0001              (0.0006)         +0.01 % (Neutro)
-========================================================================================
-* p < 0.10, ** p < 0.05, *** p < 0.01
-```
-
-### 🧬 1. Retorno Marginal de la Semilla Certificada ($+9{,}82\,\%$)
-El uso de semilla con certificación oficial ejerce un impacto positivo, directo y altamente significativo ($p < 0{,}001$, $t=4{,}19$), incrementando el rendimiento de arroz cáscara en **$+9{,}82\,\%$** frente al grano autoguardado o común. Desde la perspectiva agronómica y microeconómica, este diferencial responde a:
-* **Superior pureza genética y varietal** sin degeneración por resiembra repetida.
-* **Vigor fisiológico óptimo y germinación uniforme** del almácigo en parcela.
-* **Alta sanidad del insumo** (ausencia de patógenos preexistentes transmitidos por semilla).
-
-### 💧 2. Complementariedad con el Riego Tecnificado ($+48{,}58\,\%$)
-El acceso a riego (por gravedad gestionada, aspersión o goteo) se consolida como el determinante individual que mayor impulso productivo otorga al cultivo (**$+48{,}58\,\%$**, $p < 0{,}001$). Esto corrobora que el retorno del germoplasma mejorado alcanza su máximo potencial bajo un suministro hídrico seguro.
-
-### 🐛 3. Penalizaciones por Vulnerabilidad Agroclimática
-Los choques exógenos y biológicos reducen drásticamente la cosecha arrocera: los ataques de **plagas y enfermedades** imponen una pérdida del **$-13{,}23\,\%$**, mientras que anomalías hídricas como **sequías** ($-8{,}18\,\%$), **lluvias a destiempo e inundaciones** ($-19{,}68\,\%$) y **otros desastres climáticos** ($-36{,}29\,\%$) impactan severamente en los pequeños productores.
-
-### 🗺️ 4. Heterogeneidad Territorial (Efectos Fijos Departamentales)
-Tomando como base comparativa a **San Martín (Base $= 0{,}00\,\%$)**, la estimación revela una marcada brecha de productividad regional:
-* **Líderes productivos (Costa Norte y Sur):** Arequipa lidera el rendimiento nacional con **$+49{,}87\,\%$** ($p < 0{,}001$), seguido por Áncash (**$+44{,}36\,\%$**), La Libertad (**$+36{,}57\,\%$**), Cajamarca (**$+15{,}31\,\%$**) y Lambayeque (**$+9{,}75\,\%$**).
-* **Brechas en Selva y Sierra:** Huánuco ($-20{,}49\,\%$), Loreto ($-22{,}90\,\%$), Ucayali ($-34{,}21\,\%$), Pasco ($-53{,}69\,\%$), Madre de Dios ($-62{,}04\,\%$) y Junín ($-84{,}28\,\%$) exhiben caídas estructurales, explicadas por limitadas condiciones de infraestructura e insumos agroquímicos en zonas de frontera agrícola.
-
----
-
-## 🔍 Diagnóstico y Validación del Modelo
-
-El modelo definitivo cumple con rigor las pruebas econométricas post-estimación:
-1. **Multicolinealidad Ausente (VIF):** El Factor de Inflación de la Varianza medio es **$2{,}06$** (y apenas $1{,}39$ en la variable de semillas certificadas), muy por debajo del umbral crítico de $10$.
-2. **Heterocedasticidad (Breusch-Pagan):** El test ($\chi^2 = 108{,}20$, $p < 0{,}0001$) rechaza la homocedasticidad, validando el uso obligatorio de estimadores de varianza robustos (`vce(robust)`).
-3. **Estabilidad Paramétrica:** El parámetro de semilla se mantiene estable (de $0{,}2509$ en el Modelo 1 bivariado a $0{,}0982$ al incluir todos los controles agroecológicos, humanos y fijos), descartando sesgos graves por variable omitida.
-
----
-
-## 💡 Discusión e Implicancias de Política Agraria
-
-Nuestros resultados en el campo peruano son coherentes con la evidencia empírica internacional de **Takeshima et al. (2025)** en el *GHS-Panel* de Nigeria. En ambas economías en desarrollo, el aislamiento metodológico del atributo de *certificación formal* corrobora una rentabilidad marginal positiva y estadísticamente significativa en el rendimiento agrícola, supeditada al control territorial e hídrico.
-
-**Recomendaciones de Política:**
-1. **Focalización de Subsidios Temporales y Crédito Agrario:** Aliviar los costos de transacción y el diferencial de precio de la semilla certificada en pequeños agricultores donde el factor financiero representa una barrera de entrada al insumo formal.
-2. **Inversión en Infraestructura de Riego Tecnificado:** Articular los programas de absorción varietal con el mejoramiento de canales y sistemas de riego para garantizar el retorno en productividad ($+48{,}58\,\%$).
-3. **Fortalecimiento del Servicio de Extensión Agraria:** Capacitar al agricultor en buenas prácticas de manejo fitosanitario para mitigar las mermas por plagas ($-13{,}23\,\%$).
-
----
-
-## 📦 Estructura de Replicación del Repositorio
-
-```text
-🌾 ena-arroz-2024/
- ├── 📄 Analisis_Econometrico_Arroz_ENA2024.do   # Script principal de limpieza, merge, regresión y exportación
- ├── 📄 Descarga_Microdatos_ENA2024.do           # Script automatizado para descarga de microdatos (API INEI)
- ├── 📂 Paper/                                   # Paquete LaTeX del artículo científico (main.tex / main_check.pdf)
- │    ├── 📄 main.tex                            # Código fuente del paper estilo journal (10 páginas exactas)
- │    └── 📄 main_check.pdf                      # PDF compilado final de la investigación
- ├── 📂 Resultados/                              # Directorio generado automáticamente con salidas del modelo
- │    ├── 📂 Tablas/                             # Tablas .rtf y .tex con los 5 modelos anidados y modelo definitivo
- │    ├── 📂 Graficos/                           # Histogramas, boxplots de outliers y barras en formato .png
- │    └── 📂 Base_Procesada/                     # Base final depurada lista para modelamiento (.dta / .xlsx)
- ├── 📄 .gitignore                               # Exclusión de archivos pesados de Stata (.dta, .zip)
- └── 📄 README.md                                # Documentación principal de la investigación
+       ┌────────────────────────────────────────────────────────┐
+       │   Shock Climático Costero: Anomalía TSM Niño 1+2       │
+       │           (Índice Costero El Niño - ICEN)              │
+       └───────────────────────────┬────────────────────────────┘
+                                   │
+                                   ▼
+       ┌────────────────────────────────────────────────────────┐
+       │      Impactos en Actividad Real y Oferta Sectorial     │
+       │    (Daños en transporte/vías, caída pesca y agro)      │
+       └───────────────────────────┬────────────────────────────┘
+                                   │
+                                   ▼
+       ┌────────────────────────────────────────────────────────┐
+       │       Canal de Expectativas y Sentimiento de Mercado   │
+       │ (Encuesta BCRP: Caída en confianza empresarial y PBI)  │
+       └───────────────────────────┬────────────────────────────┘
+                                   │
+                    ┌──────────────┴──────────────┐
+                    ▼                             ▼
+       ┌────────────────────────┐    ┌────────────────────────┐
+       │     Flujos Futuros     │    │   Incertidumbre /      │
+       │   y Tasa de Descuento  │    │   Dispersión de Pronóstico │
+       └────────────┬───────────┘    └────────────┬───────────┘
+                    │                             │
+                    ▼                             ▼
+       ┌────────────────────────┐    ┌────────────────────────┐
+       │  Retornos Bursátiles   │    │  Volatilidad           │
+       │  BVL (Nivel)           │    │  Condicional (GARCH)   │
+       └────────────────────────┘    └────────────────────────┘
 ```
 
 ---
 
-## 🚀 Guía de Replicación Automatizada en Stata (3 Pasos)
+## 📊 3. Base de Datos y Operacionalización de Variables
 
-Para reproducir el $100\%$ de los cuadros, regresiones y gráficos de este estudio en Stata (**sin necesidad de descargar bases manualmente**):
+El dataset maestro (`datos_bvl_icen_master.csv` y `.dta`) comprende **137 observaciones mensuales continuas** (Enero 2015 – Mayo 2026), combinando tres fuentes oficiales:
 
-### 1. Clonar este repositorio
+### A. Variable Explicativa Climática (Exógena) — IGP / ENFEN
+* **ICEN (Índice Costero El Niño):** Medido en °C como la media móvil trimestral de las anomalías de la Temperatura Superficial del Mar en la región Niño 1+2 frente al litoral peruano.
+* **Fuente:** Repositorio oficial del Instituto Geofísico del Perú (`http://met.igp.gob.pe/datos/ICEN.txt`).
+* **Variables derivadas:**
+  - $ICEN\_calido_t = \max(ICEN_t, 0)$: Captura choques de calentamiento (fase El Niño).
+  - $ICEN\_frio_t = \min(ICEN_t, 0)$: Captura fases frías (La Niña).
+  - $Dummy\_Nino_t = \mathbb{I}(ICEN_t \ge 1.0)$: Umbral oficial ENFEN para eventos de magnitud moderada/fuerte.
+
+### B. Variables Bursátiles (Bolsa de Valores de Lima - BVL) — API BCRP
+* **Índice General BVL (`PN01142MM`):** S&P/BVL Peru General.
+* **Índice Selectivo BVL (`PN01143MM`):** S&P/BVL Peru Select.
+* **Índices Sectoriales BVL:**
+  - *BVL Financiero* (`PN01148MM`): Sector bancario y seguros.
+  - *BVL Industrial* (`PN01149MM`): Manufactura y bienes intermedios.
+  - *BVL Minería* (`PN01150MM`): Extracción metálica (control "placebo" con precios internacionales).
+  - *BVL Servicios Públicos* (`PN01151MM`): Electricidad, infraestructura y servicios regulados.
+* **Transformación:** Retornos logarítmicos continuos: $r_{i,t} = 100 \times \ln(P_{i,t} / P_{i,t-1})$.
+
+### C. Variables Macroeconómicas y Precios de Commodities — API BCRP
+* **Tipo de Cambio PEN/USD (`PN01234PM`):** Promedio mensual interbancario ($r_{TC} = 100 \times \Delta \ln TC_t$).
+* **Tasa de Referencia de Política Monetaria (`PD04722MM`):** Tasa del BCRP en primera diferencia ($\Delta i_t = i_t - i_{t-1}$).
+* **Cobre LME (`PN01652XM`):** Cotización mensual internacional en ¢US$/lb ($r_{Cu} = 100 \times \Delta \ln Cu_t$).
+* **Petróleo WTI (`PN01660XM`):** Cotización mensual en US$/barril ($r_{WTI} = 100 \times \Delta \ln WTI_t$).
+* **Oro LME (`PN01654XM`):** Activo refugio en US$/oz troy ($r_{Au} = 100 \times \Delta \ln Au_t$).
+* **Actividad Económica / PBI Mensual (`PN01770AM`):** Índice mensual de producción desestacionalizado ($2007=100$).
+
+### D. Canal de Expectativas Macroeconómicas y Empresariales — API BCRP
+* **Expectativa de Inflación a 12 meses (`PD12912AM`):** Encuesta mensual BCRP (nivel y $\Delta$).
+* **Expectativa de Crecimiento del PBI a 12 meses (`PD38048AM`):** Crecimiento esperado a un año (nivel y $\Delta$).
+* **Expectativa de Tipo de Cambio a 12 meses (`PD38049AM`):** Presión cambiaria proyectada (nivel y $\Delta$).
+* **Expectativa de la Economía a 3 meses (`PD38045AM`):** **Índice de Confianza Empresarial** (>50 optimismo, <50 pesimismo).
+* **Expectativa del Sector a 3 meses (`PD38046AM`):** Confianza empresarial sectorial a corto plazo.
+
+### E. Mercados Financieros Globales — Yahoo Finance
+* **S&P 500 (`^GSPC`):** Co-movimiento global de renta variable ($r_{SP500} = 100 \times \Delta \ln SP500_t$).
+* **VIX Index (`^VIX`):** Proxy de incertidumbre y aversión al riesgo internacional (*fear gauge*).
+
+---
+
+## 📐 4. Estrategia Econométrica
+
+Dado el tamaño de muestra mensual ($T \approx 137$), la investigación evita modelos sobrerestringidos y adopta el diseño metodológico recomendado en la auditoría del proyecto:
+
+### 1. Modelo Principal de Retornos: Proyecciones Locales (Jordà, 2005)
+Para cada sector y para el índice agregado, estimamos la respuesta dinámica al horizonte $h \in \{0, 1, 2, \dots, 12\}$ meses:
+
+$$r_{i, t+h} = \alpha^{(h)} + \beta^{(h)} ICEN_{t} + \sum_{p=1}^{P} \boldsymbol{\Gamma}_{p}^{(h)} \mathbf{X}_{t-p} + \sum_{k=1}^{K} \phi_{k}^{(h)} r_{i, t-k} + \delta^{(h)} \text{COVID}_{t} + \varepsilon_{t+h}^{(h)}$$
+
+* **Ventajas frente a VAR:** Robusto a errores de especificación dinámica, permite incorporar efectos acumulativos no lineales y no impone restricciones autoregresivas recursivas en muestras intermedias.
+* **Inferencia:** Errores estándar robustos a autocorrelación y heterocedasticidad mediante corrección Newey-West con ancho de banda $L = h + 1$.
+
+### 2. Modelado de la Volatilidad Condicional: GARCH-X Univariado
+Para evaluar el impacto de la incertidumbre climática sobre la dispersión de retornos:
+
+$$\text{Ecuación de Media:} \quad r_{t} = \mu + \sum_{j=1}^{p} \rho_j r_{t-j} + \varepsilon_t, \quad \varepsilon_t = \sigma_t z_t, \quad z_t \sim \text{iid}(0,1)$$
+
+$$\text{Ecuación de Varianza (GARCH-X):} \quad \sigma_t^2 = \omega + \alpha \varepsilon_{t-1}^2 + \beta \sigma_{t-1}^2 + \gamma_1 |ICEN_t| + \gamma_2 ICEN\_calido_t$$
+
+* Permite testear formalmente si $\gamma_1 > 0$ (el shock climático eleva la volatilidad) y si $\gamma_2 \neq 0$ (asimetría entre fases cálidas y neutras).
+
+### 3. Contraste de Heterogeneidad Sectorial
+Estimación mediante un sistema de regresiones aparentemente no relacionadas (**SUR - Seemingly Unrelated Regressions**) para contrastar formalmente la hipótesis nula de coeficientes homogéneos entre sectores:
+
+$$H_0: \beta_{\text{Financiero}}^{(h)} = \beta_{\text{Industrial}}^{(h)} = \beta_{\text{Minería}}^{(h)} = \beta_{\text{Servicios}}^{(h)}$$
+
+### 4. Pruebas de Estacionariedad y Quiebres Estructurales
+* Pruebas de raíz unitaria: Dickey-Fuller Aumentado (ADF) y Phillips-Perron (PP) sobre niveles y retornos logarítmicos.
+* Prueba de quiebre endógeno de **Zivot y Andrews (1992)** para validar la estabilidad paramétrica frente a las anomalías de 2017 (Niño Costero) y 2020 (COVID-19).
+
+---
+
+## 🗂️ 5. Estructura del Repositorio
+
+```text
+📦 TIF Econometría II/
+ ├── 📂 Book/
+ │    └── 📄 El Niño Costero y la BVL.pdf        # Guía metodológica, auditoría y diseño integral del TIF
+ ├── 📂 Code/
+ │    ├── 📂 Py/
+ │    │    ├── 📄 index.ipynb                     # Notebook de extracción BCRP, ICEN, Yahoo Finance y transformaciones
+ │    │    ├── 📄 datos_bvl_icen_master.csv       # Base de datos consolidada (137 obs × 46 variables)
+ │    │    └── 📄 datos_bvl_icen_master.dta       # Base en formato Stata (tsset con %tm)
+ │    ├── 📂 Paper/                              # Código fuente en LaTeX del artículo científico
+ │    │    ├── 📄 paper.tex                       # Manuscrito estructurado en formato journal
+ │    │    └── 📄 paper.pdf                       # Documento compilado final
+ │    ├── 📂 Beamer/                             # Presentación académica para la sustentación
+ │    ├── 📄 .gitignore                          # Exclusión de binarios y temporales
+ │    └── 📄 README.md                           # Documentación técnica del proyecto
+ ├── 📂 Antecedentes/                            # Literatura y artículos indexados de referencia
+ └── 📂 Base/                                    # Respaldos de series crudas descargadas
+```
+
+---
+
+## 🚀 6. Guía de Replicación Rápida
+
+### Requisitos Previos
+* **Python 3.10+**: `pandas`, `numpy`, `requests`, `yfinance`, `matplotlib`.
+* **Stata 16+**: Paquetes recomendados: `jorda` o comandos de proyecciones locales (`lpirfs`), `arch`, `zandrews`.
+
+### Paso 1: Extracción y Consolidación de Datos en Python
+Ejecutar las celdas del notebook [Code/Py/index.ipynb](file:///c:/Users/atili/OneDrive%20-%20unsa.edu.pe/TIF%20Econometr%C3%ADa%20II/Code/Py/index.ipynb) o correr el pipeline por consola:
+
 ```bash
-git clone https://github.com/aatilio/ena-arroz-2024.git
+cd "Code/Py"
+python -c "
+import os; os.system('python ../../scratch/run_full_pipeline.py')
+"
 ```
+Esto consultará en tiempo real la API del BCRP, el servidor del IGP y Yahoo Finance, generando los archivos `datos_bvl_icen_master.csv` y `datos_bvl_icen_master.dta`.
 
-### 2. Configurar la ruta de trabajo (`cd`)
-Abre Stata, ve al script **`Analisis_Econometrico_Arroz_ENA2024.do`** y edita la línea de directorio para apuntar a la carpeta local de tu computadora:
+### Paso 2: Declaración Temporal y Estimaciones en Stata
+En Stata, importar la base generada y configurar la estructura de serie temporal mensual:
+
 ```stata
-cd "C:\Ruta\De\Tu\Carpeta\ena-arroz-2024"
-```
+* Cargar base procesada
+use "Code/Py/datos_bvl_icen_master.dta", clear
 
-### 3. Ejecutar el script principal (`Ctrl + D`)
-Haz clic en **Run** en Stata. El do-file cuenta con un **Interruptor Inteligente (*Smart Switch*)**:
-* Si no detecta las bases crudas del INEI en tu equipo, llamará automáticamente a `Descarga_Microdatos_ENA2024.do`, conectará con los servidores oficiales (`proyectos.inei.gob.pe`), descargará los **Módulos 1895 (ENA 973)** y **1911 (ENA 973)**, procesará los diccionarios y correrá las regresiones en un solo flujo.
-* Si ya cuentas con los datos descargados, saltará el paso de red y ejecutará las estimaciones, pruebas diagnósticas y exportación de tablas en menos de 5 segundos.
+* Declarar estructura de series de tiempo
+tsset stata_tm, monthly
+
+* Inspección gráfica de retornos e ICEN
+tsline ret_bvl_general icen, title("Retornos BVL e ICEN (2015-2026)")
+
+* Estimación de Proyección Local al horizonte h=1 con controles
+newey F1.ret_bvl_general icen L(1/2).ret_bvl_general L(1/2).ret_cobre_lme L(1/2).d_tasa_ref dummy_covid, lag(2)
+
+* Modelo de Volatilidad GARCH(1,1)-X
+arch ret_bvl_general L1.ret_bvl_general, arch(1) garch(1) het(icen_calido icen_frio)
+```
 
 ---
 
-## 📑 Referencias APA 7 Destacadas
+## 📚 7. Referencias Bibliográficas Clave (APA 7)
 
-* **Correia, S.** (2015). *Singletons, cluster-robust standard errors and fixed effects: A bad mix.* Technical Note, Duke University, 7(9), 1–7.
-* **FAO & AfricaSeeds.** (2019). *The African Seed Sector: Towards a Master Plan for the Transformation of the African Seed Sector.* Food and Agriculture Organization of the United Nations.
-* **Instituto Nacional de Estadística e Informática [INEI].** (2024). *Encuesta Nacional Agropecuaria (ENA) 2024: Módulos 1895 y 1911 - Microdatos abiertos y manual de instrumentos de recolección.* INEI. https://www.datosabiertos.gob.pe/dataset/encuesta-nacional-agropecuaria-ena-2024-instituto-nacional-de-estadistica-e-informatica-inei
-* **Takeshima, H., Edeh, H. O., & Ezenwa, O. L.** (2025). Certified seeds availability, use, yields and heterogeneity across agroecological and socioeconomic factors: Insights from nationally-representative farm panel data from Nigeria. *Agricultural Systems*, 223, 104192. https://doi.org/10.1016/j.agsy.2024.104192
+* **Banco Central de Reserva del Perú [BCRP].** (2023). *El Fenómeno El Niño y su impacto en la economía peruana* [Recuadro 1]. En *Reporte de Inflación: Panorama actual y proyecciones macroeconómicas 2023–2024* (junio). BCRP.
+* **Banco Central de Reserva del Perú [BCRP].** (2026). *Impacto de El Niño Costero 2026 en la actividad económica* [Recuadro 2]. En *Reporte de Inflación* (marzo). BCRP.
+* **Bollerslev, T.** (1986). Generalized autoregressive conditional heteroskedasticity. *Journal of Econometrics*, 31(3), 307–327. https://doi.org/10.1016/0304-4076(86)90063-1
+* **Comité Multisectorial encargado del Estudio Nacional del Fenómeno El Niño [ENFEN].** (2024). *Definición operacional de los eventos El Niño Costero y La Niña Costera en el Perú* (Nota Técnica ENFEN 01-2024). IMARPE / IGP.
+* **Jordà, Ò.** (2005). Estimation and inference of impulse responses by local projections. *American Economic Review*, 95(1), 161–182. https://doi.org/10.1257/0002828053854583
+* **Zivot, E., & Andrews, D. W. K.** (1992). Further evidence on the great crash, the oil-price shock, and the unit-root hypothesis. *Journal of Business & Economic Statistics*, 10(3), 251–270. https://doi.org/10.1080/07350015.1992.10509904

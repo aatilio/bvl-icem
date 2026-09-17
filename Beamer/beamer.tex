@@ -1,0 +1,383 @@
+\documentclass[t]{beamer}
+% ----------------------------------------------------------
+% --- Configuración general ---
+% ----------------------------------------------------------
+% --- Tema y configuración de color ---
+\usetheme{Madrid}
+
+% Definir colores personalizados
+\definecolor{Myturquoise}{RGB}{0, 128, 128} 
+\definecolor{Myorange}{RGB}{204, 85, 0}
+
+% Aplicar color turquesa a la estructura
+\usecolortheme[named=Myturquoise]{structure}
+
+% Ajustar los colores del pie de página a turquesa
+\setbeamercolor{palette primary}{bg=Myturquoise,fg=white}
+\setbeamercolor{palette secondary}{bg=Myturquoise!80!black,fg=white}
+\setbeamercolor{palette tertiary}{bg=Myturquoise!60!black,fg=white}
+\setbeamerfont{caption}{size=\footnotesize}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{tikz} 
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{array}
+\usepackage{amsmath}
+
+% Ajuste de fuentes de la carátula 
+% Se define el título en negrita (\bfseries) y el subtítulo explícitamente en normal/delgado (\mdseries)
+\setbeamerfont{title}{size=\large, series=\bfseries}
+\setbeamerfont{subtitle}{size=\footnotesize, series=\mdseries}
+\setbeamerfont{author}{size=\scriptsize}
+\setbeamerfont{institute}{size=\footnotesize}
+\setbeamerfont{date}{size=\footnotesize}
+
+% --- Redefinición de la Carátula para mantener el cuadro centrado ---
+\setbeamertemplate{title page}{
+    \vspace*{1.3cm} % Mantiene el cuadro turquesa separado de los logos y centrado
+    \begin{centering}
+        \begin{beamercolorbox}[rounded=true,shadow=true,sep=8pt,center]{title}
+            {\usebeamerfont{title}\inserttitle}\par%
+            \ifx\insertsubtitle\@empty\else%
+              \vskip0.4em%
+              {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+            \fi%
+        \end{beamercolorbox}%
+        \vskip0.5cm% Espacio entre el título y los autores
+        \begin{beamercolorbox}[sep=4pt,center]{author}
+            \usebeamerfont{author}\insertauthor
+        \end{beamercolorbox}
+        \vskip0.2cm%
+        \begin{beamercolorbox}[sep=4pt,center]{institute}
+            \usebeamerfont{institute}\insertinstitute
+        \end{beamercolorbox}
+        \vskip0.05cm%
+        \begin{beamercolorbox}[sep=4pt,center]{date}
+            \usebeamerfont{date}\insertdate
+        \end{beamercolorbox}
+    \end{centering}
+}
+
+% --- 1. Configuración para el contenido de las diapositivas (Páginas intermedias) ---
+\addtobeamertemplate{frametitle}{}{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=north east, xshift=-0.35cm, yshift=0.055cm, inner sep=0pt] at (current page.north east) {
+            \includegraphics[height=1.5cm, keepaspectratio]{Logo - Universidad y Facultad (turqueza).png}
+        };
+    \end{tikzpicture}%
+\setbeamerfont{subtitle}{size=\normalsize}
+}
+
+% --- 2. Configuración de la primera a la última página (UNSA en color negro) ---
+\newcommand{\FirstLastPageLayout}{
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=north east, xshift=-0.3cm, yshift=-0.09cm, inner sep=0pt] at (current page.north east) {
+            \includegraphics[height=1.5cm, keepaspectratio]{Logo - Universidad y Facultad (sin fondo).png}
+        };
+        \node[anchor=south west, xshift=0.5cm, yshift=0.75cm] at (current page.south west) {
+            \textcolor{black}{\footnotesize \textit{Universidad Nacional de San Agustín de Arequipa}}
+        };
+    \end{tikzpicture}
+}
+% ----------------------------------------------------------
+% --- Información de la Investigación ---
+% ----------------------------------------------------------
+% Título principal en negrita
+\title[Semillas Certificadas y Rendimiento Agrícola]{\textbf{Efecto del Uso de Semillas Certificadas sobre el Rendimiento Agrícola del Cultivo de Arroz Cáscara}} 
+% Subtítulo normal/delgado (no heredará negrita)
+\subtitle{en las Unidades Agropecuarias del Perú: Evidencia para el Año 2024} 
+
+% Autores continuos en un solo bloque, separados por punto y coma (;)
+\author[Econometría II]{%
+    Ccanchi Quispe, Alex Nicolas; Condori Arapa, Alan Atilio; Flores Condo, Maribel; 
+    López Pérez, Fabinho Jorge; Mamani Calisaya, Eduardo Fabian; Medina Huarsaya, Christopher Luis; 
+    Morante Torres, Carlos Estefano; Quispe Castillo, Rose Sthefany; Suri Huamani, Dayana Betsabeth; 
+    Villavicencio Chire, Sebastian Enrique; Yauri Moran, Gabriel Alexander%
+}
+
+\institute[]{Facultad de Economía / Escuela Profesional de Economía} 
+\date{2026}
+
+\begin{document}
+\setbeamertemplate{frametitle continuation}{}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\figurename}{Figura}
+
+% ==========================================================
+% --- Diapositiva 1: Carátula ---
+% ==========================================================
+\begin{frame}
+ \FirstLastPageLayout%
+    \titlepage
+\end{frame}
+
+% ==========================================================
+% --- Diapositiva 2: Contenido / Índice ---
+% ==========================================================
+\begin{frame}[t]{Contenido} 
+\vspace{-0.5cm}
+\framesubtitle{}
+
+    \begin{enumerate}
+    
+        \item Introducción y Marco Teórico
+        \begin{enumerate}
+            \item Introducción y Problema de Investigación
+            \item Marco Teórico, Conceptual y Revisión del Estado del Arte
+        \end{enumerate}
+        
+        \item Datos y Metodología Econométrica
+        \begin{enumerate}
+            \item Base de Datos ENA 2024 y Variables de Control
+            \item Especificación del Modelo Log-Lineal (MCO)
+        \end{enumerate}
+        
+        \item Resultados y Discusión
+        \begin{enumerate}
+            \item Estimaciones Progresivas y Estabilidad Paramétrica
+            \item Impacto de las Semillas Certificadas y Efectos Geográficos
+        \end{enumerate}
+
+        \item Conclusiones y Recomendaciones de Política
+        \begin{enumerate}
+            \item Síntesis de Hallazgos y Limitaciones
+            \item Propuestas para la Política Pública Agrícola
+        \end{enumerate}
+        
+    \end{enumerate}
+    
+\end{frame}
+
+% ==========================================================
+% --- Diapositiva 3: Introducción ---
+% ==========================================================
+\begin{frame}[t]{Introducción}
+\hspace{0.2cm}
+\begin{minipage}{0.92\textwidth}
+\vspace{-0.4cm}
+    \textbf{Seguridad Alimentaria y Tecnología Agrícola}
+    \vspace{0.05cm}
+        \begin{itemize}
+            \justifying
+            \item El uso de semillas certificadas se consolida como una de las herramientas tecnológicas más eficientes para incrementar la productividad física sin presionar la frontera agrícola.
+        \end{itemize}
+        
+    \vspace{0.05cm}
+    \normalsize
+    \textbf{Brechas Tecnológicas en el Cultivo de Arroz}
+        \begin{itemize}
+            \justifying
+            \item El arroz cáscara es crucial para la dieta nacional y el sustento de miles de unidades agropecuarias, pero coexiste el empleo de semillas certificadas con el reciclado informal de campañas anteriores.
+        \end{itemize}
+    
+    \vspace{0.05cm}
+    \normalsize
+    \textbf{Pregunta de Investigación}
+        \begin{itemize}
+            \justifying
+            \item \textit{¿Cómo influye el uso de semillas certificadas en el rendimiento del cultivo de arroz cáscara en las unidades agropecuarias del Perú durante el año 2024?}
+        \end{itemize}
+        
+\end{minipage}
+\end{frame}
+
+% ==========================================================
+% --- Diapositiva 4: Marco Teórico y Conceptual ---
+% ==========================================================
+\begin{frame}[t]{Marco Teórico y Conceptual}
+\hspace{0.2cm}
+\begin{minipage}{0.92\textwidth}
+\vspace{-0.4cm}
+    \textbf{Teoría de la Producción}
+    \vspace{0.05cm}
+        \begin{itemize}
+            \justifying
+            \item Bajo el enfoque de Just y Pope (1979) y Alston (2021), la semilla certificada es un insumo tecnológico que desplaza positivamente la frontera de producción al mejorar la eficiencia en el uso de agua y otros recursos.
+        \end{itemize}
+        
+    \vspace{0.05cm}
+    \normalsize
+    \textbf{Difusión de Innovaciones (Rogers, 2003)}
+        \begin{itemize}
+            \justifying
+            \item La adopción tecnológica depende de la ventaja relativa percibida, la extensión agraria, la disponibilidad de información y los incentivos sociales entre agricultores.
+        \end{itemize}
+    
+    \vspace{0.05cm}
+    \normalsize
+    \textbf{Enfoque de Meta-frontera Estocástica}
+        \begin{itemize}
+            \justifying
+            \item Considera la heterogeneidad tecnológica regional midiendo la distancia con el \textit{Ratio de Brecha Tecnológica} (TGR) y la eficiencia técnica global (MTE).
+        \end{itemize}
+        
+\end{minipage}
+\end{frame}
+
+% ==========================================================
+% --- Diapositiva 5: Datos y Variables ---
+% ==========================================================
+\begin{frame}[t]{Base de Datos y Variables}
+\hspace{0.2cm}
+\begin{minipage}{0.92\textwidth}
+\vspace{-0.4cm}
+
+    \textbf{Fuente de Información}
+    \vspace{0.05cm}
+        \begin{itemize}
+            \justifying
+            \item Se emplean microdatos de la \textbf{Encuesta Nacional Agropecuaria (ENA) 2024} del INEI. La muestra final balanceada consta de \textbf{1,991 unidades agropecuarias} productoras de arroz.
+        \end{itemize}
+        
+    \vspace{0.05cm}
+    \textbf{Variables del Modelo Econométrico}
+    \vspace{0.05cm}
+    \begin{center}
+        \footnotesize
+        \renewcommand{\arraystretch}{1.12}
+        \begin{tabular}{|>{\arraybackslash}m{3.1cm}|>{\centering\arraybackslash}m{1.9cm}|>{\arraybackslash}m{4.3cm}|}
+        \hline
+        \textbf{Variable} & \textbf{Tipo} & \textbf{Definición Operativa} \\
+        \hline
+        $\ln(\text{Rendimiento})$ & Dependiente & Logaritmo natural del rendimiento ($kg/ha$) \\
+        \hline
+        \textbf{Semillas certificadas} & Explicativa & Dicotómica (1 si usó semilla certificada; 0 no) \\
+        \hline
+        \textbf{Fuente de agua} & Control & Dicotómica (1 si usó riego superficial/pozo; 0 secano) \\
+        \hline
+        \end{tabular}
+    \end{center}
+
+    \vspace{-0.1cm}
+    \textbf{Otras Variables de Control}
+        \begin{itemize}
+            \justifying
+            \item Choques climáticos (sequía, plagas), sexo y edad del conductor, educación superior, y efectos fijos departamentales.
+        \end{itemize}
+
+\end{minipage}
+\end{frame}
+
+% ==========================================================
+% --- Diapositiva 6: Modelo Econométrico ---
+% ==========================================================
+\begin{frame}{Especificación del Modelo Econométrico}
+\hspace{0.2cm}
+\begin{minipage}{0.92\textwidth}
+\vspace{-0.55cm}
+    \small
+    \justifying
+    Se especifica un modelo log-lineal estimado por \textbf{Mínimos Cuadrados Ordinarios} (MCO) con errores estándar robustos a la heterocedasticidad:
+    \vspace{0.08cm}
+    
+    \textbf{Modelo Econométrico General}
+    \vspace{-0.15cm}
+    {\footnotesize
+    \begin{align*}
+    \ln(\text{Rendimiento})_i &= \beta_0 + \beta_1 \text{Semillas\_Certificadas}_i + \beta_2 \text{Fuente\_Agua}_i \\
+    &\quad + \beta_3 \text{Sequía}_i + \beta_4 \text{Lluvias\_Destiempo}_i \\
+    &\quad + \beta_5 \text{Plagas\_Enfermedades}_i + \beta_6 \text{Otros\_Factores}_i \\
+    &\quad + \beta_7 \text{Mujer\_Productora}_i + \beta_8 \text{Educación\_Superior}_i \\
+    &\quad + \beta_9 \text{Edad\_Productor}_i + \sum_{j} \gamma_j \text{Departamento}_{ji} + u_i
+    \end{align*}
+    }
+    \vspace{-0.25cm}
+    Donde:
+        \begin{itemize}
+            \setlength{\itemsep}{1pt}
+            \footnotesize
+            \item $\beta_1$: Cambio semielástico por uso de semillas certificadas.
+            \item $\gamma_j$: Efectos fijos departamentales (base: San Martín).
+            \item $u_i$: Término de error robusto a la heterocedasticidad (Huber-White).
+        \end{itemize}
+
+\end{minipage}
+\end{frame}
+
+% ==========================================================
+% --- Diapositiva 7: Resultados de la Regresión ---
+% ==========================================================
+\begin{frame}{Resultados de la Regresión (Stata)}
+\hspace{0.2cm}
+\begin{minipage}{0.92\textwidth}
+\vspace{-0.55cm}
+    \begin{table}
+        \centering
+        \caption{Resultados Seleccionados de las Estimaciones OLS Robustas}
+        \scriptsize
+        \renewcommand{\arraystretch}{1.05}
+        \begin{tabular}{lccc}
+            \hline
+            \textbf{Variables Independientes} & \textbf{Modelo (1)} & \textbf{Modelo (2)} & \textbf{Modelo (5) Definitivo} \\ \hline
+            Semillas certificadas ($X_1$)  & 0.2509*** & 0.0191 & 0.0982*** \\
+                                           & (0.0252)  & (0.0231) & (0.0206) \\
+            Fuente de agua                 & --        & 1.1672*** & 0.4858*** \\
+                                           &           & (0.0423)  & (0.0552) \\ \hline
+            Controles Climáticos           & No        & No        & Sí \\
+            Controles Sociodemográficos    & No        & No        & Sí \\
+            Efectos Fijos Departamentales  & No        & No        & Sí (San Martín base) \\ \hline
+            Observaciones ($N$)            & 1,991     & 1,991     & 1,991 \\
+            R-cuadrado ($R^2$)             & 0.0470    & 0.3341    & 0.5502 \\ \hline
+            \multicolumn{4}{l}{\tiny Errores estándar robustos a la heterocedasticidad entre paréntesis. *** $p<0.01$, ** $p<0.05$.}
+        \end{tabular}
+    \end{table}
+
+    \begin{itemize}
+        \justifying
+        \item \textbf{Cálculo Semielástico Exacto (Halvorsen y Palmquist, 1980):}
+        \vspace{-0.15cm}
+        \begin{align*}
+        \Delta\% \text{ Rendimiento} &= \left[\exp(\hat{\beta}_1) - 1\right] \times 100 \\
+        &= [\exp(0.0982) - 1] \times 100 = \mathbf{+10.32\%}
+        \end{align*}
+    \end{itemize}
+
+\end{minipage}
+\end{frame}
+
+% ==========================================================
+% --- Diapositiva 8: Conclusiones ---
+% ==========================================================
+\begin{frame}{Conclusiones y Recomendaciones}
+\hspace{0.2cm}
+\begin{minipage}{0.92\textwidth}
+\vspace{-0.4cm}
+
+\begin{enumerate}
+        \justifying
+        \item \textbf{Impacto Físico Significativo}: Controlando por el factor hídrico, choques de clima y perfil sociodemográfico, el uso de semillas certificadas aumenta de forma robusta el rendimiento promedio del arroz cáscara en un \textbf{+10.32\%} ($p < 0.01$).
+        
+        \vspace{0.25cm}
+        \justifying
+        \item \textbf{Importancia del Control Espacial}: La incorporación de efectos fijos regionales en el Modelo (5) es fundamental. De lo contrario, se incurre en un severo sesgo por omitir diferencias geográficas y estructurales de los valles agrarios.
+        
+        \vspace{0.25cm}
+        \justifying
+        \item \textbf{Recomendación de Política Pública}: Se recomienda subsidiar y expandir los programas formales de adquisición de semillas certificadas para pequeños productores rurales y robustecer la red de extensionismo agrario en las regiones vulnerables.
+    \end{enumerate}
+    
+    \vspace{0.4cm}
+    \begin{center}
+        \textbf{\large ¡Muchas gracias por su atención!}
+    \end{center}
+
+\end{minipage}
+\end{frame}
+
+% ==========================================================
+% --- Diapositiva 9: Cierre ---
+% ==========================================================
+\begin{frame}[c]
+    \FirstLastPageLayout % 
+    \centering
+    \vspace{0.4cm}
+    \Huge \textcolor{Myorange}{Muchas gracias} % 
+\end{frame}
+
+\end{document}

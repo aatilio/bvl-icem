@@ -1,0 +1,77 @@
+# ==============================================================================
+# .gitignore — TIF Econometría II (Series de Tiempo: El Niño Costero y la BVL)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Bases de datos y archivos de datos pesados/autogenerados
+# ------------------------------------------------------------------------------
+*.dta
+*.raw
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.tmp
+*.temp
+
+# Si se generan descargas intermedias o directorios temporales de datos
+Base_Cruda/
+Descargas/
+temp/
+scratch/
+
+# ------------------------------------------------------------------------------
+# 2. Python y Jupyter Notebooks
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+.env
+.venv/
+env/
+venv/
+
+# ------------------------------------------------------------------------------
+# 3. Archivos temporales y de registro de Stata
+# ------------------------------------------------------------------------------
+*.log
+*.smcl
+*.do.stswp
+*.gph
+*~
+*.bak
+
+# ------------------------------------------------------------------------------
+# 4. Archivos auxiliares de compilación LaTeX (Paper y Beamer)
+# ------------------------------------------------------------------------------
+*.aux
+*.out
+*.synctex.gz
+*.bbl
+*.blg
+*.toc
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.vrb
+*.run.xml
+*.bcf
+*.lof
+*.lot
+
+# PDFs compilados (se regeneran localmente desde el código fuente .tex)
+paper.pdf
+beamer.pdf
+plantilla.pdf
+
+# ------------------------------------------------------------------------------
+# 5. Archivos del Sistema Operativo y Entornos de Desarrollo (IDEs)
+# ------------------------------------------------------------------------------
+desktop.ini
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
