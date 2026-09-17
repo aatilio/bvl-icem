@@ -1,4 +1,4 @@
-# 🌊 Shocks de El Niño Costero y Mercado Bursátil Peruano: Evidencia Econométrica sobre Retornos, Volatilidad Condicional y Heterogeneidad Sectorial en la BVL (2015–2026)
+# 🌊 Shocks de El Niño Costero y Mercado Bursátil Peruano: Evidencia Econométrica sobre Retornos, Volatilidad Condicional y Heterogeneidad Sectorial en la BVL (2004–2026)
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab?style=flat-square&logo=python&logoColor=white)
 ![Stata](https://img.shields.io/badge/Stata-16.0%2B-1f5b8c?style=flat-square&logo=stata&logoColor=white)
@@ -21,7 +21,7 @@ El Fenómeno El Niño Costero representa uno de los eventos hidrometeorológicos
 Este estudio analiza empíricamente la **respuesta dinámica de los retornos accionarios y la volatilidad condicional de la Bolsa de Valores de Lima (BVL)** ante los shocks exógenos del **Índice Costero El Niño (ICEN)**, evaluando la existencia de **heterogeneidad sectorial** (Financiero, Industrial, Minería y Servicios Públicos) e incorporando el canal mediador de las **expectativas macroeconómicas y empresariales**.
 
 ### Pregunta General de Investigación:
-> *¿Los shocks del Índice Costero El Niño (ICEN) generan una respuesta dinámica y estadísticamente identificable en los retornos y la volatilidad condicional del mercado bursátil peruano, y es dicha respuesta heterogénea entre los sectores económicos de la Bolsa de Valores de Lima durante el período 2015–2026?*
+> *¿Los shocks del Índice Costero El Niño (ICEN) generan una respuesta dinámica y estadísticamente identificable en los retornos y la volatilidad condicional del mercado bursátil peruano, y es dicha respuesta heterogénea entre los sectores económicos de la Bolsa de Valores de Lima durante el período 2004–2026?*
 
 ### Preguntas Específicas:
 1. **Dinámica e Impulso-Respuesta:** ¿Existe una respuesta estadísticamente significativa en los retornos del índice general (S&P/BVL Peru General) ante innovaciones del ICEN y en qué horizonte temporal ($h$ meses) se disipa?
